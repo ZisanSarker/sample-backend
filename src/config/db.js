@@ -8,10 +8,7 @@ const connectDB = async () => {
     }
 
     try {
-        await mongoose.connect(process.env.mongoURL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(process.env.mongoURL);
         console.log(`Connected to Database: ${mongoose.connection.host}`.bgCyan.white);
     } catch (error) {
         console.log(`Error in connecting to Database: ${error.message}`.bgRed.white);
@@ -37,7 +34,7 @@ const connectDB = async () => {
     process.on('SIGINT', async () => {
         await mongoose.connection.close();
         console.log('Database connection closed due to application termination'.bgYellow.white);
-        process.exit(0);
+        process.exit(0); //Exit application with error code 0 in case of process completed successfully.
     });
 };
 
