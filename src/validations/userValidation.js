@@ -5,7 +5,7 @@ const validateEmail = (email) => {
 };
 
 const validateName = (name) => {
-    const nameRegex = /^[a-zA-Z][a-zA-Z0-9_]*$/;
+    const nameRegex = /^[a-zA-Z][a-zA-Z0-9_ ]*$/;
     return validator.isLength(name, { min: 2 }) && nameRegex.test(name);
 };
 
